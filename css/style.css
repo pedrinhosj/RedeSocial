@@ -1,0 +1,78 @@
+@import url(./form.css);
+@import url(./modals.css);
+@import url(./post.css);
+
+:root {
+  --defaultBackground-color: #001c40;
+  --border: #294380;
+  --back2: #183153;
+  --textColor: #a69d9d;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+i,
+button,
+.imgUserclass {
+  cursor: pointer;
+}
+.imgUserclass {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: 5px solid var(--border);
+
+  background-image: url(../img/user-solid.svg);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--textColor);
+  background: var(--back2);
+}
+header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--defaultBackground-color);
+  border-bottom: 1px solid var(--textColor);
+  z-index: 100;
+}
+header span {
+  display: grid;
+  place-items: center;
+}
+header label {
+  position: relative;
+  width: 200px;
+}
+header label i {
+  position: absolute;
+  right: 3px;
+  top: 25%;
+}
+header span label input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--textColor);
+  padding: 5px;
+}
+
+.close {
+  opacity: 0;
+  visibility: hidden;
+}

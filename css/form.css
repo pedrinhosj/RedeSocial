@@ -1,0 +1,98 @@
+section#formContainer {
+  position: absolute;
+  z-index: 1002;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.302);
+  backdrop-filter: blur(8px);
+}
+section#formContainer form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 50%;
+  height: 25rem;
+  padding: 50px;
+  border-radius: 35px;
+  background: var(--defaultBackground-color);
+}
+.previewImg-form {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid var(--border);
+  background-image: url(../img/user-solid.svg);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.previewImg-form i {
+  font-size: 30px;
+  color: var(--textColor);
+}
+.previewImg-form p {
+  position: absolute;
+  bottom: -45%;
+  color: var(--textColor);
+}
+input:focus {
+  outline: none;
+}
+#formContainer form input {
+  font-size: 18px;
+  padding-left: 10px;
+  font-weight: 800;
+  border-radius: 3px;
+  background: transparent;
+  border: 5px solid var(--border);
+  color: var(--textColor);
+}
+input[type="file"] {
+  display: none;
+}
+input#nameUser-input {
+  width: calc(100% - 80px);
+  height: 50px;
+}
+form input#bioUser-input {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 30px;
+}
+section button[type="submit"] {
+  width: 40%;
+  padding: 10px;
+  background: transparent;
+  border: 4px solid var(--border);
+  border-radius: 8px;
+  color: var(--textColor);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+@media (max-width: 800px) {
+  section#formContainer form {
+    width: 80%;
+    padding: 40px;
+  }
+  section#formContainer {
+    padding: 20px;
+  }
+}
+@media (max-width: 500px) {
+  input#nameUser-input {
+    width: 100%;
+    margin-top: 20px;
+  }
+  button[type="submit"] {
+    width: 70%;
+  }
+}

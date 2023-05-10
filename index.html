@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script defer src="./js/index.js" type="module"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="formContainer" class="close">
+      <form autocomplete="off">
+        <label for="file">
+          <div class="previewImg-form">
+            <p>Edit</p>
+            <input type="file" name="file" id="file" accept="image/*" />
+          </div>
+        </label>
+        <input
+          required
+          type="text"
+          id="nameUser-input"
+          placeholder="User name"
+          maxlength="8"
+        />
+        <input type="text" id="bioUser-input" placeholder="Bio(optional)" />
+        <button type="submit">Confirm</button>
+      </form>
+    </section>
+    <header>
+      <i id="updateUserDataBTn" class="fa-solid fa-gear"></i>
+      <span>
+        <h1>Social</h1>
+        <label>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" />
+        </label>
+      </span>
+      <i id="newPostBtn" class="fa-solid fa-plus"></i>
+    </header>
+    <aside id="settings">
+      <ul>
+        <li id="profile">
+          <i class="fa-solid fa-user"></i>
+          <h3>Profile</h3>
+        </li>
+        <li>
+          <i class="fa-solid fa-heart"></i>
+          <h3>Likes</h3>
+        </li>
+        <li>
+          <i class="fa-solid fa-address-card"></i>
+          <h3>My posts</h3>
+        </li>
+      </ul>
+    </aside>
+    <section id="posts">
+      <ul></ul>
+    </section>
+    <aside id="modalNewPost">
+      <form id="newPostForm" autocomplete="off">
+        <h1>New Post</h1>
+        <input id="title" type="text" placeholder="title post" required />
+        <input id="text" type="text" placeholder="text" required />
+        <button type="submit" id="submitNewPost">Enviar</button>
+      </form>
+    </aside>
+  </body>
+</html>

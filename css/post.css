@@ -1,0 +1,57 @@
+section#posts {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  border-left: 1px solid var(--textColor);
+  border-right: 1px solid var(--textColor);
+  overflow-y: scroll;
+}
+section#posts::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50px;
+  background-color: var(--border);
+}
+section#posts::-webkit-scrollbar-thumb {
+  background-color: var(--textColor);
+  border-radius: 50px;
+}
+
+.postCard {
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--defaultBackground-color);
+  border-bottom: 1px solid var(--textColor);
+  border-collapse: collapse;
+  padding: 10px;
+  gap: 10px;
+}
+.postCard span:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+}
+.postCard span:nth-of-type(2) {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.postCard i {
+  font-size: 15px;
+}
+.postCard span:nth-of-type(3) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.idPost {
+  opacity: 0;
+}

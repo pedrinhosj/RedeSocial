@@ -1,0 +1,95 @@
+:root {
+  --defaultBackground-color: #001c40;
+  --border: #294380;
+  --back2: #183153;
+  --textColor: #a69d9d;
+}
+
+aside {
+  width: 30%;
+  margin-top: 80px;
+  padding: 10px;
+  text-align: center;
+  display: none;
+  background-color: var(--defaultBackground-color);
+}
+.openRight {
+  display: block;
+  animation: openRight linear 0.4s;
+}
+.openLeft {
+  display: block;
+  animation: openLeft linear 0.4s;
+}
+#newPostBtn.actived {
+  transform: rotate(45deg);
+}
+@keyframes openRight {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes openLeft {
+  from {
+    transform: translateX(-100%);
+  }
+}
+aside form {
+  padding: 10px;
+  height: 80%;
+}
+aside form input {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  background-color: var(--back2);
+  margin: 10px;
+  font-size: 18px;
+  color: #c8bbbbdf;
+  border-radius: 6px;
+}
+aside form button {
+  width: 100px;
+  background-color: transparent;
+  background-color: transparent;
+  border: 2px solid var(--border);
+  color: var(--textColor);
+  padding: 10px;
+  font-weight: 800;
+  border-radius: 8px;
+  margin: 10px;
+}
+aside#settings {
+  padding: 0;
+}
+
+aside form {
+  position: fixed;
+}
+aside#settings li {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  transition: 0.3s;
+}
+aside#settings li:hover {
+  background-color: var(--back2);
+}
+
+@media (max-width: 950px) {
+  aside {
+    width: 60%;
+  }
+}
+@media (max-width: 620px) {
+  aside.openRight,
+  aside.openLeft {
+    position: absolute;
+    width: 100%;
+    z-index: 1001;
+    height: calc(100% - 80px);
+    background-color: var(--defaultBackground-color);
+  }
+}
