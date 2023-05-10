@@ -55,7 +55,7 @@ function newPost(title, text) {
   newPost.innerHTML = `
   <div class="imgUserclass"></div>
           <span>
-            <h4 class="userName">Pedro</h4>
+            <h4 class="userName">name undefined</h4>
             <p>${new Date().getDate()}/${new Date().getMonth() + 1}</p>
             <p class="idPost">${id}</p>
           </span>
@@ -127,16 +127,3 @@ export function search(ev) {
     }
   }
 }
-//   posts.forEach((post) => {
-//     if (
-//       !post
-//         .querySelector("span.content h4")
-//         .textContent.includes(ev.target.value.trim()) &&
-//       ev.target.value.trim() !== ""
-//     ) {
-//       post.style.display = "none";
-//     } else {
-//       post.style.display = "flex";
-//     }
-//   });
-// }
