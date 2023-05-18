@@ -2,14 +2,15 @@ import { userData } from "./previewForm.js";
 
 export function updateData(src) {
   const imgContainer = document.querySelectorAll(".imgUserclass");
-  if (src !== "default") {
+  if (src !== "default" && src !== undefined) {
     imgContainer.forEach((ev) => {
+      console.log(src);
       ev.style.backgroundImage = `url(${src})`;
       ev.style.backgroundSize = "cover";
     });
   }
   document.querySelectorAll(".userName").forEach((ev) => {
-    ev.textContent = userData.name;
+    ev.textContent = userData.name || "name undefined";
   });
   document.querySelectorAll(".bioUserclass").forEach((ev) => {
     ev.textContent = userData.bio;

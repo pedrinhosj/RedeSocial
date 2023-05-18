@@ -1,54 +1,22 @@
 import { updateData } from "./dataUser.js";
 import { userData } from "./previewForm.js";
 
-export function loadPosts() {
-  if (localStorage.getItem("number") === null) return;
-  for (let i = localStorage.getItem("number") - 1; i !== 0; i--) {
-    const li = document.createElement("li");
-    li.classList.add("postCard");
-    let post;
-    if (!checkRepeat(i, li)) {
-      post = localStorage.getItem(`post-${i - 1}`);
-    } else {
-      post = localStorage.getItem(`post-${i}`);
-    }
-    li.innerHTML = post;
-  }
-  const icon = document.querySelectorAll(".postCard span.interactions i.fa-x");
-  for (let i = 0; i < icon.length; i++) {
-    icon[i].addEventListener("click", removePost);
+class Post {
+  constructor(title, text) {
+    this.title = title;
+    this.text = text;
+    this.id = Number(localStorage.getItem("numberID")) || 1;
+    localStorage.setItem("numberID", this.id + 1);
+
+    localStorage.setItem(`post-${this.id}`, JSON.stringify(this));
+    createElement(this.title, this.text, this.id);
+    document.querySelector("aside#modalNewPost").classList.remove("openRight");
+    document.querySelector("#newPostBtn").classList.remove("actived");
   }
 }
 
-function checkRepeat(id, li) {
-  if (localStorage.getItem(`post-${id}`) === null) {
-    return false;
-  } else {
-    const ul = document.querySelector("section#posts ul");
-    if (li.innerHTML === localStorage.getItem(`post-${id}`)) {
-      return false;
-    } else {
-      ul.appendChild(li);
-      return true;
-    }
-  }
-}
-
-export function removePost(ev) {
-  const id =
-    ev.target.parentElement.parentElement.querySelector(
-      "span .idPost"
-    ).textContent;
-  localStorage.removeItem(`post-${id}`);
-  ev.target.parentElement.parentElement.remove();
-}
-
-function newPost(title, text) {
-  let id =
-    localStorage.getItem("number") === null
-      ? 1
-      : localStorage.getItem("number");
-
+function createElement(title, text, id) {
+  const ul = document.querySelector("section#posts ul");
   const newPost = document.createElement("li");
   newPost.classList.add("postCard");
 
@@ -71,25 +39,39 @@ function newPost(title, text) {
             <p class="post">${text}</p>
           </span>
   `;
-
-  localStorage.setItem(`post-${id}`, newPost.innerHTML);
-  id++;
-  localStorage.setItem("number", id);
-
+  ul.appendChild(newPost);
+  newPost.querySelector(".fa-x").addEventListener("click", removePost);
   updateData(userData.src);
+}
 
-  document.querySelector("aside#modalNewPost").classList.remove("openRight");
-  document.querySelector("#newPostBtn").classList.remove("actived");
-  clearPosts();
-  loadPosts();
+export function loadPosts() {
+  if (localStorage.getItem("numberID") === null) return;
+
+  for (let i = localStorage.getItem("numberID") - 1; i > 0; i--) {
+    if (localStorage.getItem(`post-${i}`) === null) continue;
+
+    const post = JSON.parse(localStorage.getItem(`post-${i}`));
+    createElement(post.title, post.text, post.id);
+  }
+}
+
+export function removePost(ev) {
+  const id =
+    ev.target.parentElement.parentElement.querySelector(
+      "span .idPost"
+    ).textContent;
+  localStorage.removeItem(`post-${id}`);
+  ev.target.parentElement.parentElement.remove();
 }
 
 document.getElementById("newPostForm").addEventListener("submit", (ev) => {
   ev.preventDefault();
+
   const title = ev.target.parentElement.querySelector("input#title");
   const text = ev.target.parentElement.querySelector("input#text");
-
-  newPost(title.value.trim(), text.value.trim());
+  const newPost = new Post(title.value, text.value);
+  clearPosts();
+  loadPosts();
   title.value = "";
   text.value = "";
 });
